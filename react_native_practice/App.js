@@ -1,24 +1,45 @@
 import React from "react";
-import { FlatList, Text, View } from 'react-native';  
+import { SectionList, Text, View } from 'react-native';  
 
 const DATA = [
-  { id: '1', title: 'Item 1' },
-  { id: '2', title: 'Item 2' },
-  { id: '3', title: 'Item 3' },
+  {
+    title: 'Main dishes',
+    data: ['Pizza', 'Burger', 'Risotto']
+  },
+  {
+    title: 'Sides',
+    data: ['French Fries', 'Onion Rings', 'Fried Shrimps']
+  },
+  {
+    title: 'Sides',
+    data: ['French Fries', 'Onion Rings', 'Fried Shrimps']
+  },
+  {
+    title: 'Sides',
+    data: ['French Fries', 'Onion Rings', 'Fried Shrimps']
+  },
+  {
+    title: 'Sides',
+    data: ['French Fries', 'Onion Rings', 'Fried Shrimps']
+  },
+  {
+    title: 'Sides',
+    data: ['French Fries', 'Onion Rings', 'Fried Shrimps']
+  },
 ];
-
-const Item = ({ title }) => (
-  <View style={{ padding: 20 }}>
-    <Text style={{ fontSize: 24 }}>{title}</Text>
-  </View>
-);
 
 export default function App() {
   return (
-    <FlatList
-    data={DATA}
-    renderItem={({item}) => <Item title={item.title} />}
-    keyExtractor={item => item.id}
+    <SectionList 
+      style={{ marginTop: 10 }}
+      sections={DATA}
+      keyExtractor={(item, index) => item + index}
+      renderItem={({item}) => <Text style={{padding: 20}}>{item}</Text>}
+      renderSectionHeader={({ section: { title } }) => (
+        <View style={{ backgroundColor: "#f0f0f0", padding: 10 }}>
+          <Text style={{ fontWeigh: 'bold', fontSize: 18 }}>{title}</Text>
+        </View>
+      )}
     />
   );
 }
