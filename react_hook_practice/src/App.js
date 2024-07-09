@@ -1,21 +1,29 @@
 
-import React, { createContext, useContext } from 'react';
+import React, { useState, useCallback } from 'react';
 
 import './App.css';
 
-const MyContext = createContext();
-
-function App() {
-  return (
-    <MyContext.Provider value="Hello from Context">
-      <ChildComponent />
-    </MyContext.Provider>
+const ChildComponent = React.memo(({onClick}) => {
+  console.log('ChildComponenet rendered');
+  return(
+    <button onClick={onClick}>Click me</button>
   );
+});
+
+function ParentComponent() {
+  const [count, setCount] = useState(0);
+
+  const handleClick = useCallback(() => {
+    console.log('Button clicked');
+  }, []); 
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment Count</button>
+      <ChildComponent onClick={handleClick} />
+    </div>
+  )
 }
 
-function ChildComponent() {
-  const value = useContext(MyContext);
-  return <p>{value}</p>;
-}
-
-export default App;
+export default ParentComponent;
