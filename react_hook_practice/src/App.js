@@ -1,26 +1,21 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { createContext, useContext } from 'react';
 
 import './App.css';
 
+const MyContext = createContext();
+
 function App() {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/posts/1')
-    .then(response => response.json())
-    .then(data => setData(data));
-
-    return () => {
-
-    };
-  }, []);
-
   return (
-    <div>
-      { data? <p>{data.title}</p> : <p>Loading...</p>}
-    </div>
-  )
+    <MyContext.Provider value="Hello from Context">
+      <ChildComponent />
+    </MyContext.Provider>
+  );
+}
+
+function ChildComponent() {
+  const value = useContext(MyContext);
+  return <p>{value}</p>;
 }
 
 export default App;
