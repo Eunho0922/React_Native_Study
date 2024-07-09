@@ -1,19 +1,15 @@
-import React, { useState } from "react";
-import { TextInput, View, Text } from 'react-native';  
+import React from "react";
+import { ScrollView, Text } from 'react-native';  
 
 export default function App() {
-  const [text, setText] = useState('');
-
   return (
-    <View style={{ marginTop: 50, padding: 10 }}>
-      <TextInput style={{ height: 40, borderColor: 'gray', borderWidth: 1 }}
-      placeholder="Type here"
-      onChangeText={text => setText(text)}
-      value={text}
-      />
-      <Text style={{ padding: 10, fontSize: 42 }}>
-        {text}
-      </Text>
-    </View>
+    <ScrollView>
+      <Text style={{ fontSize: 96 }}>Scroll me plz</Text>
+      <Text style={{ fontSize: 96 }}>If you like</Text>
+      <Text style={{ fontSize: 96 }}>Scrolling down</Text>
+      <Text style={{ fontSize: 96 }}>What's the best</Text>
+      <Text style={{ fontSize: 96 }}>Framework around?</Text>
+      <Text style={{ fontSize: 96 }}>React Native</Text>
+    </ScrollView>
   )
 }
