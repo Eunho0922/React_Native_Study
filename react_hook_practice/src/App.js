@@ -1,29 +1,24 @@
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useLayoutEffect, useRef } from 'react';
 
 import './App.css';
 
-const ChildComponent = React.memo(({onClick}) => {
-  console.log('ChildComponenet rendered');
-  return(
-    <button onClick={onClick}>Click me</button>
-  );
-});
-
-function ParentComponent() {
+function App() {
   const [count, setCount] = useState(0);
+  const divRef = useRef(null);
 
-  const handleClick = useCallback(() => {
-    console.log('Button clicked');
-  }, []); 
+  useLayoutEffect(() => {
+    if(divRef.current) {
+      divRef.current.style.color = count % 2 === 0 ? 'blue' : 'green';
+    }
+  }, [count])
 
   return (
     <div>
-      <p>Count: {count}</p>
-      <button onClick={() => setCount(count + 1)}>Increment Count</button>
-      <ChildComponent onClick={handleClick} />
+      <div ref={divRef}>Count: {count}</div>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
     </div>
   )
 }
 
-export default ParentComponent;
+export default App;
