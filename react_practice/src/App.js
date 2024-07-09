@@ -1,7 +1,8 @@
 import React from "react"
 
-import GoalList from "./componenets/GoalList"
-import './App.css';
+import GoalList from "./componenets/GoalList/GoalList"
+import NewGoal from "./componenets/NewGoal/NewGoal";
+import './App.css';  
 
 function App() { 
   const courseGoals = [
@@ -17,7 +18,8 @@ function App() {
         <li>Learn all about the Course Main Topic</li>
         <li>Help other students in the Course Q&A</li>
         </ul>*/ }
-        <GoalList goals={courseGoals}/>
+        <NewGoal />
+        <GoalList goals={courseGoals} />
       </div>
     )
 }
