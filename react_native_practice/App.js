@@ -1,10 +1,10 @@
 import React from "react";
-import { View, Text } from 'react-native';  
+import { Text } from 'react-native';  
 
 export default function App() {
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>Hello, World!</Text>
-    </View>
+    <Text style={{fontSize: 20, color: 'blue' }}>
+      Hello, world!
+    </Text>
   )
 }
