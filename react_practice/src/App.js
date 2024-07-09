@@ -12,11 +12,12 @@ function App() {
   ]);
 
   const addNewGoalsHandler = (newGoal) => {
-    setCourseGoals(courseGoals.concat(newGoal));
+    // setCourseGoals(courseGoals.concat(newGoal));
 
     // setCourseGoals([...courseGoals, newGoal])
 
-    // setCourseGoals((prevCourseGoals) => prevCourseGoals.concat(newGoal));
+    // 상태 함수형인 아래 방법을 추천함
+    setCourseGoals((prevCourseGoals) => prevCourseGoals.concat(newGoal));
     // setCourseGoals((prevCourseGoals) => [...prevCourseGoals, newGoal])
   }
     return (
