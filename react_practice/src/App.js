@@ -10,15 +10,15 @@ function App() {
     { id: "cg2", text: "Learn all about the Course Main Topic" },
     { id: "cg3", text: "Help other students in the Course Q&A" },
   ];
+
+  const addNewGoalsHandler = (newGoal) => {
+    courseGoals.push(newGoal)
+    console.log(courseGoals);
+  }
     return (
       <div className='course-goals'>
         <h2>Course Goals</h2>
-        {/* <ul className="goal-list">
-        <li>Finish the Course</li>
-        <li>Learn all about the Course Main Topic</li>
-        <li>Help other students in the Course Q&A</li>
-        </ul>*/ }
-        <NewGoal />
+        <NewGoal onAddGoal={addNewGoalsHandler}/>
         <GoalList goals={courseGoals} />
       </div>
     )
